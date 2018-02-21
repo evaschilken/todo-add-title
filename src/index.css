@@ -2,6 +2,7 @@ body {
   background-color: yellow;
 }
 
-.imageComp {
+.imageComp,
+.textComp {
   position: absolute;
 }

@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Helpers from './helper.js';
+import textData from './textdata.json';
 import './index.css';
 
 class Image extends React.Component {
@@ -53,9 +54,58 @@ class Image extends React.Component {
         style={this.state.image.location}
         title='test'
         alt='test'>
-      </img>
-    )
+      </img>)
+    }
+}
+
+class Text extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text : {
+        location: {
+          top: Helpers.getRandomInt(300) + 'px',
+          left: Helpers.getRandomInt(300) + 'px'
+        },
+        index: Helpers.getRandomInt(3)
+      }
+    };
   }
+
+  componentDidMount() {
+    console.log('componentDidMount called')
+    this.timerID = setInterval(
+      () => this.changeText(),
+      5000
+    );
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount called')
+    clearInterval(this.timerID);
+  }
+
+  changeText() {
+    console.log('changeText called')
+
+    this.setState({
+      text : {
+        location: {
+          top: Helpers.getRandomInt(300) + 'px',
+          left: Helpers.getRandomInt(300) + 'px'
+        },
+        index: Helpers.getRandomInt(3)
+      }
+    });
+  }
+
+  render() {
+
+    return(
+      <div className="textComp" style={this.state.text.location}>
+        {textData[this.state.text.index].content}
+      </div>)
+    }
 }
 
 
@@ -75,6 +125,9 @@ class App extends React.Component {
         <Image/>
         <Image/>
         <Image/>
+        <Text/>
+        <Text/>
+        <Text/>
       </div>
     );
   }

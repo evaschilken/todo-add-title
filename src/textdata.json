@@ -1,0 +1,14 @@
+[
+  {
+    "content" : "text1",
+    "type": "quote"
+  },
+  {
+    "content" : "text2",
+    "type": "word"
+  },
+  {
+    "content" : "text3",
+    "type": "quote"
+  }
+]
